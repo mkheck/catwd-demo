@@ -31,7 +31,7 @@ jobs:
       #        export PATH=$PWD/bellsoft-liberica-jdk21.0.6+10/bin:$PATH
 
     - name: Build container with Maven
-      run: mvn spring-boot:build-image -Dspring-boot.build-image.imageName=hecklerm/catwd-demo:cnbnat
+      run: mvn -Pnative spring-boot:build-image -Dspring-boot.build-image.imageName=hecklerm/catwd-demo:cnbnat
 
 #    - name: Build with Maven
 #      run: mvn clean package -DskipTests
