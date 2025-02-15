@@ -16,17 +16,19 @@ jobs:
     - name: Set up JDK 21
       uses: actions/setup-java@v2
       with:
-        java-version: '21'
-        distribution: 'temurin'
+        java-version: '21-distroless'
+#        java-version: '21'
+#        distribution: 'temurin'
+        distribution: 'microsoft'
 
     - name: Build with Maven
       run: mvn clean package -DskipTests
 
     - name: Build Docker image
-      run: docker build -t hecklerm/catwd-demo:latest .
+      run: docker build -t hecklerm/catwd-demo:distroless .
 
     - name: Log in to Docker Hub
       run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
     - name: Push Docker image
-      run: docker push hecklerm/catwd-demo:latest
+      run: docker push hecklerm/catwd-demo:distroless
