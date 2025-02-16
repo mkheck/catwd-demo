@@ -4,7 +4,7 @@
 #EXPOSE 8080
 #CMD ["java", "-jar", "/app.jar"]
 
-## "Standard" JVM build using Temurin, local, extracted jar
+# "Standard" JVM build using Temurin, local, extracted jar
 #FROM eclipse-temurin:latest
 #WORKDIR /app
 #COPY target/*.jar ./myapp.jar
@@ -18,12 +18,15 @@
 #EXPOSE 8080
 #CMD ["-Xmx256m", "-jar", "/app.jar"]
 
-# Native image, local
+# Native image, local - can anyone ID the flaw here?
+# (App is built on MacOS, container image is built around Alpine Linux)
 #FROM alpine:latest
 #WORKDIR /app
 #COPY target/catwd-demo /app/
 #EXPOSE 8080
 #CMD ["/app/catwd-demo"]
+
+# CNBs have entered the chat
 
 # Irrelevant if we're doing the native image build using the NIK
 ## Stage 1: Build the application
