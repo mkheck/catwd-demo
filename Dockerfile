@@ -4,6 +4,14 @@
 #EXPOSE 8080
 #CMD ["java", "-jar", "/app.jar"]
 
+## "Standard" JVM build using Temurin, local, extracted jar
+#FROM eclipse-temurin:latest
+#WORKDIR /app
+#COPY target/*.jar ./myapp.jar
+#RUN jar -xvf myapp.jar
+#EXPOSE 8080
+#CMD ["java", "org.springframework.boot.loader.launch.JarLauncher"]
+
 # Distroless, local
 #FROM mcr.microsoft.com/openjdk/jdk:21-distroless
 #COPY target/*.jar /app.jar
