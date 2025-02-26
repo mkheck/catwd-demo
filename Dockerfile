@@ -18,6 +18,19 @@
 #EXPOSE 8080
 #CMD ["-Xmx256m", "-jar", "/app.jar"]
 
+# "Standard" JVM build using Temurin, local, fully executable jar
+# No real benefit to doing this, and it doesn't properly process SIGTERM.
+# For instructional purposes only. ;)
+#FROM eclipse-temurin:latest
+#RUN groupadd --system appgroup && \
+#    useradd --system --gid appgroup --create-home appuser
+#WORKDIR /app
+#RUN chown -R appuser:appgroup /app
+#COPY target/*.jar /app.jar
+#RUN chmod +x /app.jar
+#USER appuser
+#CMD ["/app.jar"]
+
 # Native image, local - can anyone ID the flaw here?
 # (App is built on MacOS, container image is built around Alpine Linux)
 #FROM alpine:latest
