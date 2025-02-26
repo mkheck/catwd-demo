@@ -17,6 +17,7 @@
 #COPY target/*.jar /app.jar
 #EXPOSE 8080
 #CMD ["-Xmx256m", "-jar", "/app.jar"]
+##CMD ["-XX:MaxRAMPercentage=25.0", "-jar", "/app.jar"]
 
 # "Standard" JVM build using Temurin, local, fully executable jar
 # No real benefit to doing this, and it doesn't properly process SIGTERM.
