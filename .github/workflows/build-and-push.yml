@@ -19,6 +19,7 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
 
+
 #    OPTION 1: The "standard" way
 #    - name: Build with Maven
 #      run: mvn clean package -DskipTests
